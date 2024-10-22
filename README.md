@@ -4,19 +4,19 @@ png injection example
 ```
 ❯ ll
 total 5736
-drwxr-xr-x  10 l  staff      320 Oct 22 13:14 .
-drwxr-xr-x   3 l  staff       96 Oct 22 12:47 ..
-drwxr-xr-x  13 l  staff      416 Oct 22 12:48 .git
--rw-r--r--   1 l  staff       31 Oct 22 12:47 README.md
--rw-r--r--   1 l  staff     3012 Oct 22 12:35 aboutPNG.txt
--rw-r--r--   1 l  staff      423 Oct 22 12:10 extract.py
--rw-r--r--@  1 l  staff   529444 Oct 22 10:42 halloweencatOG.png
--rw-r--r--   1 l  staff      317 Oct 22 12:42 injectintopng.py
--rw-r--r--   1 l  staff     1045 Oct 22 12:35 injectionWriteup.txt
--rw-r--r--@  1 l  staff  2381232 Oct 22 11:19 procexp64.exe
+drwxr-xr-x  10 l  s      320 Oct 22 13:14 .
+drwxr-xr-x   3 l  s       96 Oct 22 12:47 ..
+drwxr-xr-x  13 l  s      416 Oct 22 12:48 .git
+-rw-r--r--   1 l  s       31 Oct 22 12:47 README.md
+-rw-r--r--   1 l  s     3012 Oct 22 12:35 aboutPNG.txt
+-rw-r--r--   1 l  s      423 Oct 22 12:10 extract.py
+-rw-r--r--@  1 l  s   529444 Oct 22 10:42 halloweencatOG.png
+-rw-r--r--   1 l  s      317 Oct 22 12:42 injectintopng.py
+-rw-r--r--   1 l  s     1045 Oct 22 12:35 injectionWriteup.txt
+-rw-r--r--@  1 l  s  2381232 Oct 22 11:19 procexp64.exe
 ❯ cp halloweencatOG.png halloweencat.png
 ```
-Before you start check the sum of the procexp64.exe
+Before you start check the 256 sha of procexp64.exe
 ```
 ❯ shasum -a 256 procexp64.exe
 8158dc0569972c10056f507cf9e72f4946600ce163c4c659a610480585cd4935  procexp64.exe
@@ -47,7 +47,7 @@ drwxr-xr-x  13 l  s     416 Oct 22 12:48 .git
 -rw-r--r--   1 l  s     1045 Oct 22 12:35 injectionWriteup.txt
 -rw-r--r--@  1 l  s  2381232 Oct 22 11:19 procexp64.exe
 ```
-Go ahead and open the modified halloweencat.png. Compare it the OG. They are same but, we can see from the size they are not.
+Go ahead and open the modified halloweencat.png. Compare it to the OG. They look the same when you view it but, we can see from the size difference there is something up. 
 Now lets extract exe from the png
 
 ```
