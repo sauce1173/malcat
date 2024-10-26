@@ -3,25 +3,27 @@ aboutPNG.txt
 PNG files have the following format
 
 Starting Signature 
-First 8 bytes: 89 50 4e 47 0d 0a 1a 0a (PNG, File Signature)
+`First 8 bytes: 89 50 4e 47 0d 0a 1a 0a (PNG, File Signature)`
 
 Then the following chunks:
-
+```
 IHDR = HEADER
-PLTE = Palette Table
+PLTE = Palette Table (if persent)
 IDAT = Image Data
+```
 
 Ending Signature
-Last 12 bytes: 00 00 00 00 49 45 4e 44 ae 42 60 82 (...IEND.B`.| , end png)
+`Last 12 bytes: 00 00 00 00 49 45 4e 44 ae 42 60 82 (...IEND.B`.| , end png)`
 
 
 
 A bit of a break down of file using hexdump:
-
+```
 ❯ head -2 halloweencatOG.png | hexdump -C
 00000000  89 50 4e 47 0d 0a 1a 0a                           |.PNG....|
-
+```
 If we check the next line we will see the HEADER:
+```
 ❯ head -3 halloweencatOG.png | hexdump -C
 00000000  89 50 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.PNG........IHDR|
 00000010  00 00 02 86 00 00 02 48  08 06 00 00 00 fc 68 25  |.......H......h%|
@@ -43,10 +45,12 @@ If we check the next line we will see the HEADER:
 00000110  31 8b 18 bd 8b 74 9b ff  b3 d1 66 36 89 4d 70 ec  |1....t....f6.Mp.|
 00000120  c0 c2 06 8a 30 e1 40 41  82 1c 8e 12 0c e2 05 54  |....0.@A.......T|
 00000130  c0 30 89 08 b1 8a 29 da  a8 bc f1 ef db b5 3c b3  |.0....).......<.|
-00000140  0a                                  
+00000140  0a 
+```                                 
 
-We will skip the rest as it won't be used in example. Having said that more sophisticated methods do use PLTE chunk to inject into. We are only using the append method.
-
+We will skip the rest as it won't be used in example. Having said that more sophisticated methods do use PLTE chunk to inject into. 
+We are only using the **append method**.
+```
 ❯ tail -2 halloweencatOG.png | hexdump -C
 00000000  02 05 81 82 c0 b5 8d 40  21 86 d7 f6 fc 96 d1 15  |.......@!.......|
 00000010  04 0a 02 05 81 82 c0 35  88 c0 d8 e8 58 1a 1b 9b  |.......5....X...|
@@ -54,7 +58,9 @@ We will skip the rest as it won't be used in example. Having said that more soph
 00000030  47 e0 ff 07 c3 31 ca 26  c6 8f 0d dc 00 00 00 00  |G....1.&........|
 00000040  49 45 4e 44 ae 42 60 82                           |IEND.B`.|
 00000048
+```
 
-
-Once we see this we know everything will be ignored. So if we append the exe to this file it will be ignored by a viewer or whatnot. The good news is that we can extract the exe from the end of the file.
+Once we see this we know everything will be ignored by an application used to view a PNG file. 
+So if we append the exe to this file it will be ignored by a viewer or whatnot. 
+The good news is that we can extract whatever we append from the end of the file. Weather it be text, code or an executable.
 
